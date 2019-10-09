@@ -24,8 +24,8 @@ public class ProgramIOFile {
 			PrintWriter pw = new PrintWriter(iofile);
 			// Запись данных в файл
 			pw.println("I am is study!");
-			pw.println("Das ist fantastisch	!");
-			pw.println("Hello Darya!");
+			pw.println("Das ist fantastisch!");
+			pw.println("Hello Darya!!");
 			// Закрытие файла после использвания
 			pw.close();
 			// Определение объекта для чтения файла
