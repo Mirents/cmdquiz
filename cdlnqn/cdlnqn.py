@@ -61,18 +61,19 @@ while True:
 		break
 
 	while True:
-		print('	Вопрос: ' + ques)
-		command = input("		Ответ: ")
+		print('Вопрос: ' + ques)
+		command = input("	Ответ: ")
 		if command.lower() == "ex".lower():
 			exit(0)
 		elif command == answ:
 			yesanswer += 1
-			print('Правильный ответ\n')
+			print('Правильно\n')
 			break
 		elif command == '--help':
 			help()
 		elif len(command) != 0:
-			print('Неправильный ответ\n')
+			print('Не правильно. Правильный ответ: ', answ)
+			#input("	Нажмите Enter")
 			break
 
 showresult()
