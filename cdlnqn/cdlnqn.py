@@ -4,6 +4,7 @@ filename = "question.txt"
 numstring = 0
 yesanswer = 0
 answer = []
+ex = True
 
 def generatenumquestion():
 	while True:
@@ -33,8 +34,11 @@ def help():
 	if inp == 'n':
 		exit(0)
 
-def showresult():
-	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(len(listquestion)))
+def showresult(flag_exit):
+	ans = len(answer)
+	if not flag_exit:
+		ans -= 1
+	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(ans))
 	exit(0)
 
 try:
@@ -60,20 +64,23 @@ while True:
 	else:
 		break
 
-	while True:
+	while ex:
 		print('Вопрос: ' + ques)
 		command = input("	Ответ: ")
 		if command.lower() == "ex".lower():
-			exit(0)
+			ex = False
+			break
 		elif command == answ:
 			yesanswer += 1
-			print('Правильно\n')
+			print('Верно\n')
 			break
 		elif command == '--help':
 			help()
 		elif len(command) != 0:
-			print('Не правильно. Правильный ответ: ', answ)
+			print('Не верно. Правильный ответ: {}\n'.format(answ))
 			#input("	Нажмите Enter")
 			break
-
-showresult()
+	if not ex:
+		break
+		
+showresult(ex)
