@@ -38,7 +38,14 @@ def showresult(flag_exit):
 	ans = len(answer)
 	if not flag_exit:
 		ans -= 1
-	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(ans))
+	pok = 100*yesanswer/ans
+	if pok > 0 and pok < 40:
+		pok = 'Нужно подучить'
+	elif pok >= 40 and pok < 80:
+		pok = 'Достойно'
+	else:
+		pok = 'Отлично'
+	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(ans) + ' ' + pok)
 	exit(0)
 
 try:
