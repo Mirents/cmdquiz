@@ -1,10 +1,12 @@
-import random
+import random, os
 
 filename = "question.txt"
 numstring = 0
 yesanswer = 0
 answer = []
 ex = True
+
+clear = lambda: os.system('clear')
 
 def generatenumquestion():
 	while True:
@@ -19,17 +21,21 @@ def generatenumquestion():
 			return -1
 
 def hello():
+	clear()
 	print('Викторина командной строки GNU/Linux')
 	print('Для выхода ввести \'ex\'')
 	print('Для помощи ввести \'--help\'\n')
 
 def help():
+	clear()
 	print('Викторина командной строки GNU/Linux')
 	print('Для выхода ввести \'ex\'')
 	print('Помощь - ввести \'--help\'')
 	print('В качестве вопросов используется файл \'question.txt\' в формате:')
 	print('	вопрос|ответ')
 	print('На некоторые вопросы возможны разные правильные ответы, уточнять в файле \'question.txt\'')
+	print('Но такие ситуации по возможности исключены или имеются подсказки.')
+	print('По умолчанию использование каталогов начинается с \'./\'.')
 	inp = input('\nПродолжить y \ n: ')
 	if inp == 'n':
 		exit(0)
@@ -39,13 +45,13 @@ def showresult(flag_exit):
 	if not flag_exit:
 		ans -= 1
 	pok = 100*yesanswer/ans
-	if pok > 0 and pok < 40:
-		pok = 'Нужно подучить'
+	if pok >= 0 and pok < 40:
+		pok = 'нужно подучить'
 	elif pok >= 40 and pok < 80:
-		pok = 'Достойно'
+		pok = 'достойно'
 	else:
-		pok = 'Отлично'
-	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(ans) + ' ' + pok)
+		pok = 'отлично'
+	print('Правильных ответов: ' + str(yesanswer) + ' из ' + str(ans) + ' - ' + pok)
 	exit(0)
 
 try:
@@ -72,6 +78,8 @@ while True:
 		break
 
 	while ex:
+		#clear()
+		print('Вопрос {:3} из {:3}'.format(len(answer), numstring))
 		print('Вопрос: ' + ques)
 		command = input("	Ответ: ")
 		if command.lower() == "ex".lower():
@@ -89,5 +97,6 @@ while True:
 			break
 	if not ex:
 		break
-		
+
+clear()
 showresult(ex)
