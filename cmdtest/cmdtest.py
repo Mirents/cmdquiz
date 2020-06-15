@@ -7,7 +7,7 @@ wrong_answers = []
 answered = []
 ex = True
 simbol = '$'
-version = 0.01f
+version = 0.01
 
 clear = lambda: os.system('clear')
 
