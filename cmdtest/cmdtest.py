@@ -7,6 +7,7 @@ wrong_answers = []
 answered = []
 ex = True
 simbol = '$'
+version = 0.01f
 
 clear = lambda: os.system('clear')
 
@@ -42,6 +43,7 @@ def help():
 	print('На некоторые вопросы возможны разные правильные ответы, уточнять в файле \'question.txt\'')
 	print('Но такие ситуации по возможности исключены или имеются подсказки.')
 	print('По умолчанию использование каталогов начинается с \'./\', кроме директории /home.')
+	print('Текущая версия: ' + str(version))
 	try:
 		inp = input('\nПродолжить: y \ n: ')
 	except KeyboardInterrupt:
