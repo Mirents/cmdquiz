@@ -81,7 +81,7 @@ def showresult(flag_exit):
         inp = input('\nПосмотреть неправильные ответы: y \ n: ')
         if inp == 'y':
             for i in wrong_answers:
-                print('Вопрос: ' + get_question(listquestion[i]) + '\nОтвет:' + get_answer(listquestion[i]))
+                print('Вопрос: ' + get_question(listquestion[i]) + '\n  Ответ:' + get_answer(listquestion[i]))
     exit(0)
 
 # Геттер для вопроса
