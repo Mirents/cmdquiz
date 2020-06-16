@@ -1,23 +1,22 @@
 import random, os
 
-filename = "question.txt"
+FILENAME = "question.txt"
+SEPAR_CHAR  = '$'
+VERSION = 0.01
+
 numstring = 0
 corr_answer = 0
 wrong_answers = []
 answered = []
 ex = True
-simbol = '$'
-version = 0.01
 
 clear = lambda: os.system('clear')
 
 def generatenumquestion():
 	while True:
 		r = random.randint(1, numstring) - 1
-		#print('random is ' + str(r))
 		if  len(answered) != len(listquestion):
 			if r not in answered:
-				#print('random generate: ' + str(r))
 				answered.append(r)
 				return r
 		else:
@@ -39,11 +38,11 @@ def help():
 	print('Для выхода ввести \'ex\'')
 	print('Помощь - ввести \'--help\'')
 	print('В качестве вопросов используется файл \'question.txt\' в формате:')
-	print('	вопрос' + simbol + 'ответ')
+	print('	вопрос' + SEPAR_CHAR + 'ответ')
 	print('На некоторые вопросы возможны разные правильные ответы, уточнять в файле \'question.txt\'')
 	print('Но такие ситуации по возможности исключены или имеются подсказки.')
 	print('По умолчанию использование каталогов начинается с \'./\', кроме директории /home.')
-	print('Текущая версия: ' + str(version))
+	print('Текущая версия: ' + str(VERSION))
 	try:
 		inp = input('\nПродолжить: y \ n: ')
 	except KeyboardInterrupt:
@@ -79,13 +78,13 @@ def showresult(flag_exit):
 		exit(0)
 
 def get_question(string):
-	return string.split(simbol)[0]
+	return string.split(SEPAR_CHAR)[0]
 
 def get_answer(string):
-	return string.split(simbol)[1].rstrip()
+	return string.split(SEPAR_CHAR)[1].rstrip()
 
 try:
-	f = open(filename)
+	f = open(FILENAME)
 	listquestion = list(f)
 	numstring = len(listquestion)
 	hello()
