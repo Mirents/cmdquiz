@@ -28,7 +28,7 @@ def generatenumquestion():
 
 # Фукнция приветствия
 def hello():
-    #clear()
+    clear()
     print('Викторина командной строки GNU/Linux')
     print('Для выхода ввести \'ex\'')
     print('Для помощи ввести \'--help\'\n')
@@ -39,7 +39,7 @@ def hello():
 
 # Функция помощи
 def help():
-    #clear()
+    clear()
     print('Викторина командной строки GNU/Linux')
     print('Для выхода ввести \'ex\'')
     print('Помощь - ввести \'--help\'')
@@ -60,29 +60,29 @@ def help():
 
 # Функция показа результата
 def showresult(flag_exit):
-    #clear()
-    ans = len(answered)
-    if not flag_exit:
-        ans -= 1
-    if ans != 0:
-        pok = 100*corr_answer/ans
-    else:
-        pok = 0
+    clear()
+    ans = len(answered) - 1
+    if ans > 0:
+        if not flag_exit:
+            ans -= 1
+        if ans != 0:
+            pok = 100*corr_answer/ans
+        else:
+            pok = 0
 
-    if pok >= 0 and pok < 40:
-        pok = 'нужно подучить'
-    elif pok >= 40 and pok < 80:
-        pok = 'достойный результат'
-    else:
-        pok = 'отличный результат'
-    print('Результаты')
-    print('Правильных ответов: ' + str(corr_answer) + ' из ' + str(ans) + ' - ' + pok)
-    inp = input('\nПосмотреть неправильные ответы: y \ n: ')
-    if inp == 'y':
-        for i in wrong_answers:
-            print('Вопрос: ' + get_question(listquestion[i]) + '\nОтвет:' + get_answer(listquestion[i]))
-    else:
-        exit(0)
+        if pok >= 0 and pok < 40:
+            pok = 'нужно подучить'
+        elif pok >= 40 and pok < 80:
+            pok = 'достойный результат'
+        else:
+            pok = 'отличный результат'
+        print('Результаты')
+        print('Правильных ответов: ' + str(corr_answer) + ' из ' + str(ans) + ' - ' + pok)
+        inp = input('\nПосмотреть неправильные ответы: y \ n: ')
+        if inp == 'y':
+            for i in wrong_answers:
+                print('Вопрос: ' + get_question(listquestion[i]) + '\nОтвет:' + get_answer(listquestion[i]))
+    exit(0)
 
 # Геттер для вопроса
 def get_question(string):
@@ -116,7 +116,7 @@ while True:
         break
 
     while ex:
-        #clear()
+        clear()
         print('Вопрос {:3} из {:3}'.format(len(answered), numstring))
         print('Вопрос: ' + ques)
         try:
@@ -144,4 +144,4 @@ while True:
     if not ex:
         break
 
-    showresult(ex)
+showresult(ex)
